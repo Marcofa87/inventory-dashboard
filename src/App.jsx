@@ -1,124 +1,109 @@
 import React, { useState } from "react";
 
-function InventoryForm() {
-  const [formData, setFormData] = useState({
-    productName: "",
-    productType: "shoes",
+function App() {
+  // State per tenere traccia dell'inventario
+  const [inventory, setInventory] = useState([]);
+
+  // State per tenere traccia dei nuovi elementi dell'inventario
+  const [newItem, setNewItem] = useState({
+    name: "",
+    quantity: 0,
     sellingPrice: "",
     costPrice: "",
-    quantityInStock: "",
-    orderType: "",
-    description: "Product description",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    setFormData({
-      productName: "",
-      productType: "shoes",
-      sellingPrice: "",
-      costPrice: "",
-      quantityInStock: "",
-      orderType: "",
-      description: "",
-    });
+  // Funzione per aggiungere un nuovo elemento all'inventario
+  const addItem = () => {
+    setInventory([...inventory, newItem]);
+    setNewItem({ name: "", quantity: 0, sellingPrice: "", costPrice: "" });
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <>
+      <div>
+        <p>New Inventory Item</p>
+        <button onClick={addItem}>Save as draft</button>
+        <button onClick={addItem}>Save & Publish</button>
+      </div>
+      <div>
         <div>
-          <p>New Inventory Item</p>
-          <button type="submit">Save as draft</button>
-          <button type="submit">Save & Publish</button>
-        </div>
-        <div>
-          <div>
-            <label>
-              Product Name:
-              <input
-                name="productName"
-                value={formData.productName}
-                onChange={handleChange}
-                placeholder="Product Name"
-              />
-            </label>
-            <select
-              name="productType"
-              value={formData.productType}
-              onChange={handleChange}
-            >
-              <option value="shoes">Shoes</option>
-            </select>
-          </div>
-          <div>
-            <label>
-              <input
-                name="sellingPrice"
-                value={formData.sellingPrice}
-                onChange={handleChange}
-                placeholder="Selling price"
-              />
-            </label>
-            <label>
-              <input
-                name="costPrice"
-                value={formData.costPrice}
-                onChange={handleChange}
-                placeholder="Cost Price"
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              <input
-                name="quantityInStock"
-                value={formData.quantityInStock}
-                onChange={handleChange}
-                placeholder="Quantity in Stock"
-                type="number"
-              />
-            </label>
-            <select
-              name="orderType"
-              value={formData.orderType}
-              onChange={handleChange}
-            >
-              <option value="Order Type">Order Type</option>
-            </select>
-          </div>
+          <label>
+            Product Name:{" "}
+            <input
+              name="product name"
+              placeholder="Product Name"
+              value={newItem.name}
+              onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+            />
+          </label>
+          <select>
+            <option value="shoes">Shoes</option>
+          </select>
         </div>
         <div>
           <label>
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              rows={4}
-              cols={40}
-              placeholder="Product description"
+            Selling Price:{" "}
+            <input
+              name="selling price"
+              placeholder="Selling price"
+              value={newItem.sellingPrice}
+              onChange={(e) =>
+                setNewItem({ ...newItem, sellingPrice: e.target.value })
+              }
+            />
+          </label>
+          <label>
+            Cost Price:{" "}
+            <input
+              name="cost price"
+              placeholder="Cost price"
+              value={newItem.costPrice}
+              onChange={(e) =>
+                setNewItem({ ...newItem, costPrice: e.target.value })
+              }
             />
           </label>
         </div>
-      </form>
-      <div>
-        <h2>Form Data</h2>
-        <p>Product Name: {formData.productName}</p>
-        <p>Product Type: {formData.productType}</p>
-        <p>Selling Price: {formData.sellingPrice}</p>
-        <p>Cost Price: {formData.costPrice}</p>
-        <p>Quantity in Stock: {formData.quantityInStock}</p>
-        <p>Order Type: {formData.orderType}</p>
-        <p>Description: {formData.description}</p>
+        <div>
+          <label>
+            <input
+              name="product name"
+              placeholder="Quantity in Stock"
+              type="number"
+              value={newItem.quantity}
+              onChange={(e) =>
+                setNewItem({ ...newItem, quantity: parseInt(e.target.value) })
+              }
+            />
+          </label>
+          <select>
+            <option value="Order Type">Order Type</option>
+          </select>
+        </div>
       </div>
-    </div>
+      <div>
+        <label>
+          <textarea
+            name="description"
+            rows={4}
+            cols={40}
+            defaultValue="Product description"
+          />
+        </label>
+      </div>
+
+      {/* Visualizzazione dell'inventario */}
+      <h2>Inventario</h2>
+      <ul>
+        {inventory.map((item, index) => (
+          <li key={index}>
+            {item.name} - Quantità: {item.quantity} - Prezzo di vendita:{" "}
+            {item.sellingPrice} - Prezzo di costo: {item.costPrice}
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
 
-export default InventoryForm;
+export default App;
