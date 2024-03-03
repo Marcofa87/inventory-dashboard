@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Button from "./components/ui/Button";
+import Inventory from "./components/Inventory";
+import TextArea from "./components/ui/TextArea";
+import StockQuantity from "./components/ui/StockQuantity";
 
 function App() {
   // State per tenere traccia dell'inventario
@@ -70,48 +73,14 @@ function App() {
                 className="w-full px-3 py-2 border rounded"
               />
             </div>
-            <div>
-              <label className="block mb-1">Quantity in Stock:</label>
-              <input
-                name="quantity"
-                placeholder="Quantity in Stock"
-                type="number"
-                value={newItem.quantity}
-                onChange={(e) =>
-                  setNewItem({ ...newItem, quantity: parseInt(e.target.value) })
-                }
-                className="w-full px-3 py-2 border rounded"
-              />
-            </div>
+            <StockQuantity newItem={newItem} setNewItem={setNewItem} />
           </div>
-
-          <div className="mt-4">
-            <label className="block mb-1">Description:</label>
-            <textarea
-              name="description"
-              rows={4}
-              cols={40}
-              className="w-full px-3 py-2 border rounded"
-              value={newItem.description}
-              onChange={(e) =>
-                setNewItem({ ...newItem, description: e.target.value })
-              }
-            />
-          </div>
+          <TextArea newItem={newItem} setNewItem={setNewItem} />
         </div>
       </div>
 
       {/* Visualizzazione dell'inventario */}
-      <h2 className="text-lg mt-4">Inventario</h2>
-      <ul>
-        {inventory.map((item, index) => (
-          <li key={index}>
-            {item.name} - Quantità: {item.quantity} - Prezzo di vendita:{" "}
-            {item.sellingPrice} - Prezzo di costo: {item.costPrice} -
-            Descrizione: {item.description}
-          </li>
-        ))}
-      </ul>
+      <Inventory inventory={inventory} />
     </>
   );
 }
