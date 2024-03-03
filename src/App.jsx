@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      <div className="flex justify-start items-start min-h-screen ">
+      <div className="flex justify-start items-start ">
         <div className=" p-4 bg-white rounded shadow w-full">
           <p className="text-lg font-semibold p-4">New Inventory Item</p>
           <Button addItem={addItem}>Save as Draft</Button>
