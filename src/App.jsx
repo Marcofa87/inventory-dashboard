@@ -10,19 +10,26 @@ function App() {
     quantity: 0,
     sellingPrice: "",
     costPrice: "",
+    description: "",
   });
 
   // Funzione per aggiungere un nuovo elemento all'inventario
   const addItem = () => {
     setInventory([...inventory, newItem]);
-    setNewItem({ name: "", quantity: 0, sellingPrice: "", costPrice: "" });
+    setNewItem({
+      name: "",
+      quantity: 0,
+      sellingPrice: 0,
+      costPrice: 0,
+      description: "",
+    });
   };
 
   return (
     <>
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="w-96 p-4 bg-white rounded shadow">
-          <p className="text-lg font-semibold">New Inventory Item</p>
+      <div className="flex justify-start items-start min-h-screen ">
+        <div className=" p-4 bg-white rounded shadow w-full">
+          <p className="text-lg font-semibold p-4">New Inventory Item</p>
           <button
             onClick={addItem}
             className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mr-2"
@@ -96,6 +103,10 @@ function App() {
               cols={40}
               defaultValue="Product description"
               className="w-full px-3 py-2 border rounded"
+              value={newItem.description}
+              onChange={(e) =>
+                setNewItem({ ...newItem, description: e.target.value })
+              }
             />
           </div>
         </div>
@@ -107,7 +118,8 @@ function App() {
         {inventory.map((item, index) => (
           <li key={index}>
             {item.name} - Quantità: {item.quantity} - Prezzo di vendita:{" "}
-            {item.sellingPrice} - Prezzo di costo: {item.costPrice}
+            {item.sellingPrice} - Prezzo di costo: {item.costPrice} -
+            Descrizione: {item.description}
           </li>
         ))}
       </ul>
