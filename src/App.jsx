@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "./components/ui/Button";
 
 function App() {
   // State per tenere traccia dell'inventario
@@ -30,19 +31,8 @@ function App() {
       <div className="flex justify-start items-start min-h-screen ">
         <div className=" p-4 bg-white rounded shadow w-full">
           <p className="text-lg font-semibold p-4">New Inventory Item</p>
-          <button
-            onClick={addItem}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mr-2"
-          >
-            Save as draft
-          </button>
-          <button
-            onClick={addItem}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Save & Publish
-          </button>
-
+          <Button addItem={addItem}>Save as Draft</Button>
+          <Button addItem={addItem}>Save & Publish</Button>
           <div className="grid grid-cols-2 gap-4 mt-4">
             <div>
               <label className="block mb-1">Product Name:</label>
