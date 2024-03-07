@@ -80,6 +80,63 @@ export default function Inventory() {
           </div>
         </div>
       </div>
+      <table className="w-full bg-white border border-gray-200 divide-y divide-gray-200 rounded-xl shadow-md mt-6">
+        <thead className="bg-indigo-500 text-white">
+          <tr>
+            <th className="px-6 py-3 text-left border-r border-gray-300">
+              Checked
+            </th>
+            <th className="px-6 py-3 text-left border-r border-gray-300">
+              Product name
+            </th>
+            <th className="px-6 py-3 text-left border-r border-gray-300">
+              Category
+            </th>
+            <th className="px-6 py-3 text-left border-r border-gray-300">
+              Unit price
+            </th>
+            <th className="px-6 py-3 text-left border-r border-gray-300">
+              In-stock
+            </th>
+            <th className="px-6 py-3 text-left border-r border-gray-300">
+              Total value
+            </th>
+            <th className="px-6 py-3 text-left border-r border-gray-300">
+              Action
+            </th>
+            <th className="px-6 py-3 text-left">Status</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-gray-200">
+          <tr>
+            <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+              <input
+                type="checkbox"
+                className="form-checkbox h-5 w-5 text-indigo-600"
+              />
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+              Product 1
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+              Category 1
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+              10
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+              100
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+              1000
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+              Action 1
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap">Status 1</td>
+          </tr>
+        </tbody>
+      </table>
     </>
   );
 }
