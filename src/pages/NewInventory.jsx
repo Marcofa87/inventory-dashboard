@@ -3,8 +3,11 @@ import Button from "../components/ui/Button";
 import StockQuantity from "../components/ui/StockQuantity";
 import TextArea from "../components/ui/TextArea";
 import InventoryMap from "../components/ui/InventoryMap";
+import { useNavigate } from "react-router-dom";
 
 export default function NewInventory() {
+  const navigate = useNavigate();
+
   // State per tenere traccia dell'inventario
   const [inventory, setInventory] = useState([]);
 
@@ -28,6 +31,8 @@ export default function NewInventory() {
       costPrice: 0,
       description: "",
     });
+
+    navigate("/viewinventory");
   };
 
   return (
@@ -37,9 +42,7 @@ export default function NewInventory() {
           New Inventory Item
         </div>
         <div className="flex gap-5 justify-between text-sm text-center text-white">
-          <Button addItem={addItem} className="my-auto">
-            Save as Draft
-          </Button>
+          <Button className="my-auto">Go back</Button>
 
           <Button
             addItem={addItem}

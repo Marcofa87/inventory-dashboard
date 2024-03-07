@@ -1,4 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Inventory() {
+  const navigate = useNavigate();
+
+  const handleAddProduct = () => {
+    navigate("/newinventory");
+  };
   return (
     <>
       <div className="flex gap-5 justify-between mx-5 mt-6 max-md:flex-wrap max-md:mr-2.5 max-md:max-w-full">
@@ -13,7 +20,9 @@ export default function Inventory() {
               className="shrink-0 w-6 aspect-square"
               alt=""
             />
-            <div className="grow my-auto">Add a New Product</div>
+            <button className="grow my-auto" onClick={handleAddProduct}>
+              Add a New Product
+            </button>
           </div>
         </div>
       </div>
