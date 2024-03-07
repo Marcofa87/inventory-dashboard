@@ -32,7 +32,7 @@ export default function NewInventory() {
       description: "",
     });
 
-    navigate("/viewinventory");
+    navigate("/viewinventory", { state: { inventoryItem: newItem } });
   };
 
   return (
@@ -98,7 +98,6 @@ export default function NewInventory() {
           <TextArea newItem={newItem} setNewItem={setNewItem} />
         </div>
       </div>
-      <InventoryMap inventory={inventory} />
     </>
   );
 }
