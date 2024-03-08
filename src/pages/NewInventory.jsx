@@ -32,7 +32,7 @@ export default function NewInventory() {
       description: "",
     });
 
-    navigate("/viewinventory");
+    navigate("/viewinventory", { state: { inventoryItem: newItem } });
   };
 
   return (
