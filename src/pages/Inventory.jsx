@@ -6,6 +6,20 @@ export default function Inventory() {
   const handleAddProduct = () => {
     navigate("/newinventory");
   };
+
+  const data = [
+    {
+      id: 1,
+      productName: "Scarpe",
+      category: "Category 1",
+      unitPrice: 10,
+      inStock: 100,
+      totalValue: 1000,
+      action: "Action 1",
+      status: "Status 1",
+    },
+    // Aggiungi altre righe della tabella qui se necessario
+  ];
   return (
     <>
       <div className="flex gap-5 justify-between mx-5 mt-6 max-md:flex-wrap max-md:mr-2.5 max-md:max-w-full">
@@ -117,33 +131,35 @@ export default function Inventory() {
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
-          <tr>
-            <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
-              <input
-                type="checkbox"
-                className="form-checkbox h-5 w-5 text-indigo-600"
-              />
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
-              Product 1
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
-              Category 1
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
-              10
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
-              100
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
-              1000
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
-              Action 1
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">Status 1</td>
-          </tr>
+          {data.map((row) => (
+            <tr key={row.id}>
+              <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+                <input
+                  type="checkbox"
+                  className="form-checkbox h-5 w-5 text-indigo-600"
+                />
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+                {row.productName}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+                {row.category}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+                {row.unitPrice}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+                {row.inStock}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+                {row.totalValue}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+                {row.action}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">{row.status}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </>
