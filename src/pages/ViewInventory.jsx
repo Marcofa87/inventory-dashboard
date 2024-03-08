@@ -6,7 +6,7 @@ export default function ViewInventory() {
   const itemSellingPrice = inventoryItem?.sellingPrice;
   const itemCostPrice = inventoryItem?.costPrice;
   const itemDescription = inventoryItem?.description;
-  console.log(inventoryItem);
+
   return (
     <div className="max-w-2xl mx-auto mt-10">
       <div className="bg-white shadow overflow-hidden sm:rounded-lg">
