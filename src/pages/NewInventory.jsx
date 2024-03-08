@@ -1,39 +1,39 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Button from "../components/ui/Button";
 import StockQuantity from "../components/ui/StockQuantity";
 import TextArea from "../components/ui/TextArea";
-
 import { useNavigate } from "react-router-dom";
 
 export default function NewInventory() {
   const navigate = useNavigate();
 
-  // State per tenere traccia dell'inventario
-  const [inventory, setInventory] = useState([]);
-
   // State per tenere traccia dei nuovi elementi dell'inventario
   const [newItem, setNewItem] = useState({
-    name: "",
-    quantity: 0,
-    sellingPrice: 0,
-    costPrice: 0,
-    description: "",
+    name: "mario",
+    quantity: 10,
+    sellingPrice: 100,
+    costPrice: 10,
+    description: "calze",
   });
 
   // Funzione per aggiungere un nuovo elemento all'inventario
   const addItem = () => {
-    setInventory([...inventory, newItem]);
+    if (
+      newItem.name.trim() === "" ||
+      newItem.sellingPrice <= 0 ||
+      newItem.costPrice <= 0 ||
+      newItem.quantity <= 0
+    ) {
+      alert("Compila tutti i campi correttamente.");
+      return;
+    }
 
-    setNewItem({
-      name: "",
-      quantity: 0,
-      sellingPrice: 0,
-      costPrice: 0,
-      description: "",
-    });
-
+    // Passa i dati dopo l'aggiornamento dello stato
     navigate("/viewinventory", { state: { inventoryItem: newItem } });
+    console.log(newItem);
   };
+
+  localStorage.setItem("inventoryItem", JSON.stringify(newItem));
 
   return (
     <>
@@ -44,8 +44,9 @@ export default function NewInventory() {
         <div className="flex gap-5 justify-between text-sm text-center text-white">
           <Button className="my-auto">Go back</Button>
 
+          {/* Aggiorna il passaggio di addItem come prop */}
           <Button
-            addItem={addItem}
+            onClick={addItem}
             className="grow justify-center px-8 py-2.5 whitespace-nowrap bg-indigo-500 rounded-xl max-md:px-5"
           >
             Save & Publish

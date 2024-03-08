@@ -1,8 +1,11 @@
-import { useLocation } from "react-router-dom";
-
 export default function ViewInventory() {
-  const location = useLocation();
-  const { inventoryItem } = location.state; // Accedi all'elemento dell'inventario passato attraverso lo stato di navigazione
+  const inventoryItem = JSON.parse(localStorage.getItem("inventoryItem"));
+
+  const itemName = inventoryItem?.name;
+  const itemQuantity = inventoryItem?.quantity;
+  const itemSellingPrice = inventoryItem?.sellingPrice;
+  const itemCostPrice = inventoryItem?.costPrice;
+  const itemDescription = inventoryItem?.description;
   console.log(inventoryItem);
   return (
     <div className="max-w-2xl mx-auto mt-10">
@@ -19,35 +22,35 @@ export default function ViewInventory() {
                 Nome:
               </dt>
               <dd className="col-span-1 mt-1 text-sm text-gray-900">
-                {inventoryItem.name}
+                {itemName}
               </dd>
 
               <dt className="col-span-1 text-sm font-medium text-gray-500">
                 Quantità:
               </dt>
               <dd className="col-span-1 mt-1 text-sm text-gray-900">
-                {inventoryItem.quantity}
+                {itemQuantity}
               </dd>
 
               <dt className="col-span-1 text-sm font-medium text-gray-500">
                 Prezzo di vendita:
               </dt>
               <dd className="col-span-1 mt-1 text-sm text-gray-900">
-                {inventoryItem.sellingPrice}
+                {itemSellingPrice}
               </dd>
 
               <dt className="col-span-1 text-sm font-medium text-gray-500">
                 Prezzo di costo:
               </dt>
               <dd className="col-span-1 mt-1 text-sm text-gray-900">
-                {inventoryItem.costPrice}
+                {itemCostPrice}
               </dd>
 
               <dt className="col-span-1 text-sm font-medium text-gray-500">
                 Descrizione:
               </dt>
               <dd className="col-span-1 mt-1 text-sm text-gray-900">
-                {inventoryItem.description}
+                {itemDescription}
               </dd>
             </div>
           </dl>
