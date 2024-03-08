@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "../components/ui/Button";
 import StockQuantity from "../components/ui/StockQuantity";
 import TextArea from "../components/ui/TextArea";
-import InventoryMap from "../components/ui/InventoryMap";
+
 import { useNavigate } from "react-router-dom";
 
 export default function NewInventory() {
@@ -57,7 +57,7 @@ export default function NewInventory() {
           <p className="text-lg font-semibold p-4">New Inventory Item</p>
 
           <div className="grid grid-cols-2 gap-4 mt-4">
-            <div>
+            <form>
               <label className="block mb-1">Product Name:</label>
               <input
                 name="product name"
@@ -68,7 +68,7 @@ export default function NewInventory() {
                 }
                 className="w-full px-3 py-2 border rounded"
               />
-            </div>
+            </form>
             <div>
               <label className="block mb-1">Selling Price:</label>
               <input
@@ -98,7 +98,6 @@ export default function NewInventory() {
           <TextArea newItem={newItem} setNewItem={setNewItem} />
         </div>
       </div>
-      <InventoryMap inventory={inventory} />
     </>
   );
 }

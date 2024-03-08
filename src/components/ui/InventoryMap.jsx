@@ -1,6 +1,7 @@
-import React from "react";
+/* import React from "react";
 
 export default function InventoryMap({ inventory }) {
+  console.log(inventory);
   return (
     <>
       <div className="m-0 overflow-x-auto">
@@ -66,3 +67,18 @@ export default function InventoryMap({ inventory }) {
     </>
   );
 }
+
+/
+import { useLocation } from "react-router-dom";
+ const location = useLocation();
+
+  const { inventoryItem } = location.state;
+
+<div>
+        <p>Name: {inventoryItem.name}</p>
+        <p>Quantity: {inventoryItem.quantity}</p>
+        <p>Selling Price: {inventoryItem.sellingPrice}</p>
+        <p>Cost Price: {inventoryItem.costPrice}</p>
+        <p>Description: {inventoryItem.description}</p>
+      </div> 
+ */
