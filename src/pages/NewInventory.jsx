@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import Button from "../components/ui/Button";
-import StockQuantity from "../components/ui/StockQuantity";
-import TextArea from "../components/ui/TextArea";
+import Button from "../components/ui/newinventory/Button";
+import StockQuantity from "../components/ui/newinventory/StockQuantity";
+import TextArea from "../components/ui/newinventory/TextArea";
+import Label from "../components/ui//newinventory/Label";
 import { useNavigate } from "react-router-dom";
 
 export default function NewInventory() {
@@ -56,44 +57,8 @@ export default function NewInventory() {
       <div className="flex justify-start items-start ">
         <div className=" p-4 bg-white rounded shadow w-full">
           <p className="text-lg font-semibold p-4">New Inventory Item</p>
-
           <div className="grid grid-cols-2 gap-4 mt-4">
-            <form>
-              <label className="block mb-1">Product Name:</label>
-              <input
-                name="product name"
-                placeholder="Product Name"
-                value={newItem.name}
-                onChange={(e) =>
-                  setNewItem({ ...newItem, name: e.target.value })
-                }
-                className="w-full px-3 py-2 border rounded"
-              />
-            </form>
-            <div>
-              <label className="block mb-1">Selling Price:</label>
-              <input
-                name="selling price"
-                placeholder="Selling price"
-                value={newItem.sellingPrice}
-                onChange={(e) =>
-                  setNewItem({ ...newItem, sellingPrice: e.target.value })
-                }
-                className="w-full px-3 py-2 border rounded"
-              />
-            </div>
-            <div>
-              <label className="block mb-1">Cost Price:</label>
-              <input
-                name="cost price"
-                placeholder="Cost price"
-                value={newItem.costPrice}
-                onChange={(e) =>
-                  setNewItem({ ...newItem, costPrice: e.target.value })
-                }
-                className="w-full px-3 py-2 border rounded"
-              />
-            </div>
+            <Label newItem={newItem} setNewItem={setNewItem} />
             <StockQuantity newItem={newItem} setNewItem={setNewItem} />
           </div>
           <TextArea newItem={newItem} setNewItem={setNewItem} />
