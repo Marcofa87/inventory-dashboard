@@ -20,7 +20,7 @@ export default function ViewInventory() {
 
   return (
     <>
-      {products && products.length > 0 && (
+      {products && products.length > 0 ? (
         <>
           <Button onClick={handleDelete}>Delete Fields</Button>
           <div className="overflow-x-auto">
@@ -51,6 +51,8 @@ export default function ViewInventory() {
             </table>
           </div>
         </>
+      ) : (
+        <h2 className="text-center">Insert here you articles</h2>
       )}
     </>
   );
