@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import Form from "../components/ui/newinventory/Form";
 
 export default function Inventory() {
   const navigate = useNavigate();
@@ -65,7 +64,6 @@ export default function Inventory() {
             </div>
           </div>
         </div>
-        <Form />
       </div>
     </>
   );

@@ -1,61 +1,55 @@
-export default function ViewInventory() {
-  const inventoryItem = JSON.parse(localStorage.getItem("inventoryItem"));
+// ViewInventory.js
+import React from "react";
 
-  const itemName = inventoryItem?.name;
-  const itemQuantity = inventoryItem?.quantity;
-  const itemSellingPrice = inventoryItem?.sellingPrice;
-  const itemCostPrice = inventoryItem?.costPrice;
-  const itemDescription = inventoryItem?.description;
+export default function ViewInventory() {
+  const products = JSON.parse(localStorage.getItem("products")) || [];
 
   return (
-    <div className="max-w-2xl mx-auto mt-10">
-      <div className="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div className="px-4 py-5 sm:px-6">
-          <h3 className="text-lg font-medium leading-6 text-gray-900">
-            Dettagli del Prodotto
-          </h3>
-        </div>
-        <div className="border-t border-gray-200">
-          <dl>
-            <div className="bg-gray-50 grid grid-cols-2 gap-4 px-4 py-5 sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="col-span-1 text-sm font-medium text-gray-500">
-                Nome:
-              </dt>
-              <dd className="col-span-1 mt-1 text-sm text-gray-900">
-                {itemName}
-              </dd>
-
-              <dt className="col-span-1 text-sm font-medium text-gray-500">
-                Quantità:
-              </dt>
-              <dd className="col-span-1 mt-1 text-sm text-gray-900">
-                {itemQuantity}
-              </dd>
-
-              <dt className="col-span-1 text-sm font-medium text-gray-500">
-                Prezzo di vendita:
-              </dt>
-              <dd className="col-span-1 mt-1 text-sm text-gray-900">
-                {itemSellingPrice}
-              </dd>
-
-              <dt className="col-span-1 text-sm font-medium text-gray-500">
-                Prezzo di costo:
-              </dt>
-              <dd className="col-span-1 mt-1 text-sm text-gray-900">
-                {itemCostPrice}
-              </dd>
-
-              <dt className="col-span-1 text-sm font-medium text-gray-500">
-                Descrizione:
-              </dt>
-              <dd className="col-span-1 mt-1 text-sm text-gray-900">
-                {itemDescription}
-              </dd>
-            </div>
-          </dl>
-        </div>
+    <>
+      <div className="overflow-x-auto">
+        <table className="w-full bg-white border border-gray-200 divide-y divide-gray-200 rounded-xl shadow-md mt-6">
+          <thead className="bg-indigo-500 text-white">
+            <tr>
+              <th className="px-6 py-3 text-left border-r border-gray-300">
+                Nome
+              </th>
+              <th className="px-6 py-3 text-left border-r border-gray-300">
+                Quantità
+              </th>
+              <th className="px-6 py-3 text-left border-r border-gray-300">
+                Prezzo di Vendita
+              </th>
+              <th className="px-6 py-3 text-left border-r border-gray-300">
+                Prezzo di Costo
+              </th>
+              <th className="px-6 py-3 text-left border-r border-gray-300">
+                Descrizione
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
+            {products.map((product, index) => (
+              <tr key={index}>
+                <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+                  {product.name}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+                  {product.quantity}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+                  {product.sellingPrice}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+                  {product.costPrice}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {product.description}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-    </div>
+    </>
   );
 }

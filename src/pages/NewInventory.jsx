@@ -1,9 +1,10 @@
+// NewInventory.js
 import React, { useState } from "react";
-import Button from "../components/ui/newinventory/Button";
-import StockQuantity from "../components/ui/newinventory/StockQuantity";
-import TextArea from "../components/ui/newinventory/TextArea";
-import Label from "../components/ui//newinventory/Label";
 import { useNavigate } from "react-router-dom";
+import Button from "../components/ui/inventory/Button";
+import StockQuantity from "../components/ui/inventory/StockQuantity";
+import TextArea from "../components/ui/inventory/TextArea";
+import Label from "../components/ui/inventory/Label";
 
 export default function NewInventory() {
   const navigate = useNavigate();
@@ -25,16 +26,17 @@ export default function NewInventory() {
       newItem.costPrice <= 0 ||
       newItem.quantity <= 0
     ) {
-      alert("Compila tutti i campi correttamente.");
+      alert("Please insert valid fields.");
       return;
     }
 
-    // Passa i dati dopo l'aggiornamento dello stato
-    navigate("/viewinventory", { state: { inventoryItem: newItem } });
-    console.log(newItem);
-  };
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    const newProduct = { ...newItem };
+    products.push(newProduct);
+    localStorage.setItem("products", JSON.stringify(products));
 
-  localStorage.setItem("inventoryItem", JSON.stringify(newItem));
+    navigate("/viewinventory");
+  };
 
   return (
     <>
@@ -44,8 +46,6 @@ export default function NewInventory() {
         </div>
         <div className="flex gap-5 justify-between text-sm text-center text-white">
           <Button className="my-auto">Go back</Button>
-
-          {/* Aggiorna il passaggio di addItem come prop */}
           <Button
             onClick={addItem}
             className="grow justify-center px-8 py-2.5 whitespace-nowrap bg-indigo-500 rounded-xl max-md:px-5"
