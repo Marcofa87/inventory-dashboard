@@ -1,11 +1,19 @@
-// ViewInventory.js
-import React from "react";
+import React, { useState } from "react";
+import Button from "../components/ui/inventory/Button";
 
 export default function ViewInventory() {
-  const products = JSON.parse(localStorage.getItem("products")) || [];
+  const [products, setProducts] = useState(
+    JSON.parse(localStorage.getItem("products"))
+  );
 
+  const handleDelete = () => {
+    localStorage.removeItem("products");
+
+    setProducts([]);
+  };
   return (
     <>
+      <Button onClick={handleDelete}>Delete Fields</Button>
       <div className="overflow-x-auto">
         <table className="w-full bg-white border border-gray-200 divide-y divide-gray-200 rounded-xl shadow-md mt-6">
           <thead className="bg-indigo-500 text-white">
