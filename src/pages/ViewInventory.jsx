@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Button from "../components/ui/inventory/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function ViewInventory() {
+  const navigate = useNavigate();
   const [products, setProducts] = useState(
     JSON.parse(localStorage.getItem("products"))
   );
@@ -10,6 +12,7 @@ export default function ViewInventory() {
     localStorage.removeItem("products");
 
     setProducts([]);
+    navigate(-1);
   };
   return (
     <>

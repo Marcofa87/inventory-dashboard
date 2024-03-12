@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Button from "../components/ui/inventory/Button";
 
 export default function Inventory() {
   const navigate = useNavigate();
@@ -13,13 +14,10 @@ export default function Inventory() {
         <div className="flex-auto my-auto text-base font-medium text-zinc-700">
           Inventory Summary
         </div>
-        <div className="flex flex-col justify-center px-6 py-1.5 text-sm text-center text-white whitespace-nowrap bg-indigo-500 rounded-xl max-md:px-5">
-          <div className="flex gap-2 justify-between">
-            <button className="grow my-auto" onClick={handleAddProduct}>
-              Add a New Product +
-            </button>
-          </div>
-        </div>
+
+        <Button className="grow my-auto" onClick={handleAddProduct}>
+          Add a New Product +
+        </Button>
       </div>
       <div className="mx-5 mt-5 max-md:mr-2.5 max-md:max-w-full">
         <div className="flex gap-5 max-md:flex-col max-md:gap-0">
