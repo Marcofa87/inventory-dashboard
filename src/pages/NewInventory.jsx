@@ -18,14 +18,21 @@ export default function NewInventory() {
     description: "calze",
   });
 
+  const isNotEmptyString = (value) => value.trim() !== "";
+  const isPositiveNumber = (value) => !isNaN(value) && parseFloat(value) > 0;
+
+  const validateNewItem = (newItem) => {
+    return (
+      isNotEmptyString(newItem.name) &&
+      isPositiveNumber(newItem.sellingPrice) &&
+      isPositiveNumber(newItem.costPrice) &&
+      isPositiveNumber(newItem.quantity)
+    );
+  };
+
   // Funzione per aggiungere un nuovo elemento all'inventario
   const addItem = () => {
-    if (
-      newItem.name.trim() === "" ||
-      newItem.sellingPrice <= 0 ||
-      newItem.costPrice <= 0 ||
-      newItem.quantity <= 0
-    ) {
+    if (!validateNewItem(newItem)) {
       alert("Please insert valid fields.");
       return;
     }

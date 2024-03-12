@@ -19,19 +19,19 @@ export default function ViewInventory() {
           <thead className="bg-indigo-500 text-white">
             <tr>
               <th className="px-6 py-3 text-left border-r border-gray-300">
-                Nome
+                Name
               </th>
               <th className="px-6 py-3 text-left border-r border-gray-300">
-                Quantità
+                Quantity
               </th>
               <th className="px-6 py-3 text-left border-r border-gray-300">
-                Prezzo di Vendita
+                Selling Price
               </th>
               <th className="px-6 py-3 text-left border-r border-gray-300">
-                Prezzo di Costo
+                Cost Price
               </th>
               <th className="px-6 py-3 text-left border-r border-gray-300">
-                Descrizione
+                Description
               </th>
             </tr>
           </thead>
