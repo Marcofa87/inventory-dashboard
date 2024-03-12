@@ -36,25 +36,26 @@ export default function ViewInventory() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {products.map((product, index) => (
-              <tr key={index}>
-                <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
-                  {product.name}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
-                  {product.quantity}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
-                  {product.sellingPrice}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
-                  {product.costPrice}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {product.description}
-                </td>
-              </tr>
-            ))}
+            {products &&
+              products.map((product, index) => (
+                <tr key={index}>
+                  <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+                    {product.name}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+                    {product.quantity}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+                    {product.sellingPrice}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
+                    {product.costPrice}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {product.description}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

@@ -9,13 +9,12 @@ import Label from "../components/ui/inventory/Label";
 export default function NewInventory() {
   const navigate = useNavigate();
 
-  // State per tenere traccia dei nuovi elementi dell'inventario
   const [newItem, setNewItem] = useState({
-    name: "mario",
-    quantity: 10,
-    sellingPrice: 100,
-    costPrice: 10,
-    description: "calze",
+    name: "",
+    quantity: 1,
+    sellingPrice: 1,
+    costPrice: 1,
+    description: "",
   });
 
   const isNotEmptyString = (value) => value.trim() !== "";
@@ -30,7 +29,6 @@ export default function NewInventory() {
     );
   };
 
-  // Funzione per aggiungere un nuovo elemento all'inventario
   const addItem = () => {
     if (!validateNewItem(newItem)) {
       alert("Please insert valid fields.");
@@ -44,6 +42,9 @@ export default function NewInventory() {
 
     navigate("/viewinventory");
   };
+  const goBack = () => {
+    navigate("/");
+  };
 
   return (
     <>
@@ -52,7 +53,9 @@ export default function NewInventory() {
           New Inventory Item
         </div>
         <div className="flex gap-5 justify-between text-sm text-center text-white">
-          <Button className="my-auto">Go back</Button>
+          <Button className="my-auto" onClick={goBack}>
+            Go back
+          </Button>
           <Button
             onClick={addItem}
             className="grow justify-center px-8 py-2.5 whitespace-nowrap bg-indigo-500 rounded-xl max-md:px-5"
