@@ -14,6 +14,9 @@ export default function ViewInventory() {
     setProducts([]);
     navigate(-1);
   };
+
+  const thStyle = "px-6 py-3 text-left border-r border-gray-300";
+  const tdStyle = "px-6 py-4 whitespace-nowrap border-r border-gray-300";
   return (
     <>
       <Button onClick={handleDelete}>Delete Fields</Button>
@@ -21,39 +24,23 @@ export default function ViewInventory() {
         <table className="w-full bg-white border border-gray-200 divide-y divide-gray-200 rounded-xl shadow-md mt-6">
           <thead className="bg-indigo-500 text-white">
             <tr>
-              <th className="px-6 py-3 text-left border-r border-gray-300">
-                Name
-              </th>
-              <th className="px-6 py-3 text-left border-r border-gray-300">
-                Quantity
-              </th>
-              <th className="px-6 py-3 text-left border-r border-gray-300">
-                Selling Price
-              </th>
-              <th className="px-6 py-3 text-left border-r border-gray-300">
-                Cost Price
-              </th>
-              <th className="px-6 py-3 text-left border-r border-gray-300">
-                Description
-              </th>
+              <th className={thStyle}>Name</th>
+              <th className={thStyle}>Quantity</th>
+              <th className={thStyle}>Selling Price</th>
+              <th className={thStyle}>Cost Price</th>
+              <th className={thStyle}>Description</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
             {products &&
               products.map((product, index) => (
                 <tr key={index}>
-                  <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
-                    {product.name}
-                  </td>
+                  <td className={tdStyle}>{product.name}</td>
                   <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
                     {product.quantity}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
-                    {product.sellingPrice}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
-                    {product.costPrice}
-                  </td>
+                  <td className={tdStyle}>{product.sellingPrice}</td>
+                  <td className={tdStyle}>{product.costPrice}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {product.description}
                   </td>
