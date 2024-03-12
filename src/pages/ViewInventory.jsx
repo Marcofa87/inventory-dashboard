@@ -36,9 +36,7 @@ export default function ViewInventory() {
               products.map((product, index) => (
                 <tr key={index}>
                   <td className={tdStyle}>{product.name}</td>
-                  <td className="px-6 py-4 whitespace-nowrap border-r border-gray-300">
-                    {product.quantity}
-                  </td>
+                  <td className={tdStyle}>{product.quantity}</td>
                   <td className={tdStyle}>{product.sellingPrice}</td>
                   <td className={tdStyle}>{product.costPrice}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
